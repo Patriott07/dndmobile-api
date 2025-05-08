@@ -1,0 +1,33 @@
+import express from 'express';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import cors from 'cors';
+
+import RouteUser from './routes/auth.route.js';
+import RouteCard from './routes/card.route.js';
+
+const app = express();
+dotenv.config({ path: '.env' });
+
+const port = process.env.PORT;
+const mongo = process.env.MONGO;
+
+app.use(cors());
+app.use(express.json());
+
+app.use(RouteCard);
+app.use(RouteUser);
+
+mongoose.connect(mongo);
+
+mongoose.connection.on('connected', () => console.log('connected'));
+mongoose.connection.on('disconnected', () => console.log('disconnected'));
+
+app.get('/', (req, res) => {
+    res.json({message : "Hello world"});
+});
+
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
