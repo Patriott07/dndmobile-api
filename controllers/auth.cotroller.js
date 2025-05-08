@@ -13,8 +13,8 @@ export const login = async (req, res) => {
 
         res.status(200).json({ message: "Your Account succesfully registed", user })
     } catch (error) {
-        console.log({ err })
-        return res.status(502).json({ message: "Error : ".error })
+        console.log({ error })
+        return res.status(502).json({ message: `Error : ${error}`});
     }
 }
 
@@ -40,8 +40,8 @@ export const login = async (req, res) => {
             }
 
         } catch (error) {
-            console.log({ err })
-            return res.status(502).json({ message: "Error : ".error })
+            console.log({ error })
+            return res.status(502).json({ message: `Error : ${error}`});
         }
 
     }
@@ -55,8 +55,8 @@ export const me = async (req, res) => {
         }
 
     } catch (error) {
-        console.log({ err })
-        return res.status(502).json({ message: "Error : ".error })
+        console.log({ error })
+        return res.status(502).json({ message: `Error : ${error}`});
     }
 
 }
