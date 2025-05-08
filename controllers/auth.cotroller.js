@@ -24,7 +24,7 @@ export const login = async (req, res) => {
             const property = {
                 name: req.body.name,
                 email: req.body.email,
-                password: bycrypt.hash(req.password.body, salt),
+                password: bycrypt.hash(req.body.password, salt),
                 level: 0,
                 profile: "",
                 exp: 0,
