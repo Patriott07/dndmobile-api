@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
+// import bycrypt from 'bcrypt';
 
 import RouteUser from './routes/auth.route.js';
 import RouteCard from './routes/card.route.js';
@@ -31,3 +32,5 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+// console.log(bycrypt.hashSync("123", 10))

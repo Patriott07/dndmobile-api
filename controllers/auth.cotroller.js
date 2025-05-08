@@ -14,37 +14,38 @@ export const login = async (req, res) => {
         res.status(200).json({ message: "Your Account succesfully registed", user })
     } catch (error) {
         console.log({ error })
-        return res.status(502).json({ message: `Error : ${error}`});
+        return res.status(502).json({ message: `Error : ${error}` });
     }
 }
 
-    export const register = async (req, res) => {
-        console.log(req.body);
-        try {
-            const property = {
-                name: req.body.name,
-                email: req.body.email,
-                password: bycrypt.hash(req.body.password, salt),
-                level: 0,
-                profile: "",
-                exp: 0,
-                trophy: 0,
-                winrate : 100,
-                match : 0
-            }
-
-            const user = await User.create(property);
-
-            if (user) {
-                return res.status(200).json({ message: "Berhasil loginn..", user })
-            }
-
-        } catch (error) {
-            console.log({ error })
-            return res.status(502).json({ message: `Error : ${error}`});
+export const register = async (req, res) => {
+    console.log(req.body);
+    const hashedPassword = bycrypt.hashSync(req.body.password, salt);
+    try {
+        const property = {
+            name: req.body.name,
+            email: req.body.email,
+            password: hashedPassword,
+            level: 0,
+            profile: "",
+            exp: 0,
+            trophy: 0,
+            winrate: 100,
+            match: 0
         }
 
+        const user = await User.create(property);
+
+        if (user) {
+            return res.status(200).json({ message: "Berhasil loginn..", user })
+        }
+
+    } catch (error) {
+        console.log({ error })
+        return res.status(502).json({ message: `Error : ${error}` });
     }
+
+}
 
 export const me = async (req, res) => {
     try {
@@ -56,7 +57,7 @@ export const me = async (req, res) => {
 
     } catch (error) {
         console.log({ error })
-        return res.status(502).json({ message: `Error : ${error}`});
+        return res.status(502).json({ message: `Error : ${error}` });
     }
 
 }
