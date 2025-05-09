@@ -21,13 +21,12 @@ export const login = async (req, res) => {
 }
 
 export const register = async (req, res) => {
-    console.log(req.body);
-    const user = await User.findOne({ email: req.body.email });
-
-    if (user) throw new Error(`Akun dengan Email ${req.body.email} sudah digunakan, gunakan akun gmail yang belum terdaftar`);
-
-    const hashedPassword = bycrypt.hashSync(req.body.password, salt);
     try {
+        const hasHaveAccount = await User.findOne({ email: req.body.email });
+
+        if (hasHaveAccount) throw new Error(`Akun dengan Email ${req.body.email} sudah digunakan, gunakan akun gmail yang belum terdaftar`);
+
+        const hashedPassword = bycrypt.hashSync(req.body.password, salt);
         const property = {
             name: req.body.name,
             email: req.body.email,
