@@ -6,7 +6,7 @@ const salt = 10;
 export const login = async (req, res) => {
     try {
         console.log(req.body);
-        
+
         const user = await User.findOne({ email: req.body.email });
         if (!user) throw new Error("Cannot find any account, please try again");
 
@@ -22,6 +22,10 @@ export const login = async (req, res) => {
 
 export const register = async (req, res) => {
     console.log(req.body);
+    const user = await User.findOne({ email: req.body.email });
+
+    if (user) throw new Error(`Akun dengan Email ${req.body.email} sudah digunakan, gunakan akun gmail yang belum terdaftar`);
+
     const hashedPassword = bycrypt.hashSync(req.body.password, salt);
     try {
         const property = {
@@ -39,7 +43,7 @@ export const register = async (req, res) => {
         const user = await User.create(property);
 
         if (user) {
-            return res.status(200).json({  title : "Your Account Regitsered", message: "Thanks for trusting us, now all of your progress on gamewill be safe on your account, gooduluck warrior!", user })
+            return res.status(200).json({ title: "Your Account Regitsered", message: "Thanks for trusting us, now all of your progress on gamewill be safe on your account, gooduluck warrior!", user })
         }
 
     } catch (error) {
