@@ -16,7 +16,7 @@ export const login = async (req, res) => {
         res.status(200).json({ message: "Login Succesfully", user })
     } catch (error) {
         console.log({ error })
-        return res.status(502).json({ message: `Error : ${error}` });
+        return res.status(502).json({ error });
     }
 }
 
@@ -47,7 +47,7 @@ export const register = async (req, res) => {
 
     } catch (error) {
         console.log({ error })
-        return res.status(502).json({ message: `Error : ${error}` });
+        return res.status(502).json({ message: error });
     }
 
 }
@@ -62,7 +62,7 @@ export const me = async (req, res) => {
 
     } catch (error) {
         console.log({ error })
-        return res.status(502).json({ message: `Error : ${error}` });
+        return res.status(502).json({ message: error });
     }
 
 }
