@@ -5,6 +5,8 @@ const salt = 10;
 
 export const login = async (req, res) => {
     try {
+        console.log(req.body);
+        
         const user = await User.findOne({ email: req.body.email });
         if (!user) throw new Error("Cannot find any account, please try again");
 

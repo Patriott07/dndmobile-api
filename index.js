@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import { User } from './models/Users.model.js';
 // import bycrypt from 'bcrypt';
 
 import RouteUser from './routes/auth.route.js';
@@ -25,7 +26,7 @@ mongoose.connection.on('connected', () => console.log('connected'));
 mongoose.connection.on('disconnected', () => console.log('disconnected'));
 
 app.get('/', (req, res) => {
-    res.json({message : "Hello world"});
+    res.json({ message: "Hello world" });
 });
 
 
