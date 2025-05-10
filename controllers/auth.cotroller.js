@@ -13,7 +13,7 @@ export const login = async (req, res) => {
         const isMatch = bycrypt.compareSync(req.body.password, user.password);
         if (!isMatch) throw new Error("Authentication failed, dint match any");
 
-        res.status(200).json({ message: "Login Succesfully", user })
+        res.status(200).json({ message: "Login Succesfully, thanks for playing.. have a nice day", user })
     } catch (error) {
         console.log({ error })
         return res.status(502).json({ error });
