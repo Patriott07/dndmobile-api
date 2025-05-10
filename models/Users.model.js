@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
 
 const UserSchema = mongoose.Schema({
-    name: String,
+    name: {
+        unique: true,
+        type: String
+    },
     email: {
         unique: true,
         type: String
@@ -12,13 +15,13 @@ const UserSchema = mongoose.Schema({
         type: String
     },
     level: Number,
-    profile : String,
+    profile: String,
     exp: Number,
     trophy: Number,
-    winrate : Number,
-    match : Number,
+    winrate: Number,
+    match: Number,
 }, {
-    timestamp : true
+    timestamp: true
 });
 
 export const User = mongoose.model("users", UserSchema);
