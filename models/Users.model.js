@@ -20,6 +20,10 @@ const UserSchema = mongoose.Schema({
     trophy: Number,
     winrate: Number,
     match: Number,
+    skin: {
+        type: mongoose.Schema.Types.ObjectId,
+        reference: "skins"
+    },
 }, {
     timestamp: true
 });

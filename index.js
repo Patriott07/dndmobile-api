@@ -7,6 +7,7 @@ import { User } from './models/Users.model.js';
 
 import RouteUser from './routes/auth.route.js';
 import RouteCard from './routes/card.route.js';
+import RouteSkin from './routes/skin.route.js';
 
 const app = express();
 dotenv.config({ path: '.env' });
@@ -19,6 +20,7 @@ app.use(express.json());
 
 app.use(RouteCard);
 app.use(RouteUser);
+app.use(RouteSkin);
 
 mongoose.connect(mongo);
 
