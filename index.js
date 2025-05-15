@@ -2,7 +2,6 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import { User } from './models/Users.model.js';
 // import bycrypt from 'bcrypt';
 
 import RouteUser from './routes/auth.route.js';
