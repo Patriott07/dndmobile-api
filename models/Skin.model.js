@@ -4,7 +4,8 @@ const DeckSchema = mongoose.Schema({
     name: String,
     photo: String,
     description: String,
-    price: Number
+    price: Number,
+    prefab_name: String
 }, {
     timestamp: true
 });
