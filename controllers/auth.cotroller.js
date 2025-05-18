@@ -64,13 +64,24 @@ export const me = async (req, res) => {
         console.log({ error })
         return res.status(502).json({ message: error });
     }
-
 }
 
+export const verify = async (req, res, next) => {
+    try {
+        const auth_id = req.header.auth_id;
+        if (!auth_id) throw new Error("Youre not have access of it, sorry!")
 
+        const user = await User.findById(auth_id);
 
-export const logout = (req, res) => {
+        if (!user) throw new Error("Youre authentication faill")
 
+        req.user = {
+            ...user
+        };
+
+        next();
+    } catch (error) {
+        console.log({ error })
+        return res.status(402).json({ message: error });
+    }
 }
-
-

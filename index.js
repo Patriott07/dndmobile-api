@@ -7,6 +7,7 @@ import cors from 'cors';
 import RouteUser from './routes/auth.route.js';
 import RouteCard from './routes/card.route.js';
 import RouteSkin from './routes/skin.route.js';
+import RouteDeck from './routes/deck.route.js';
 
 const app = express();
 dotenv.config({ path: '.env' });
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(RouteCard);
 app.use(RouteUser);
 app.use(RouteSkin);
+app.use(RouteDeck);
 
 mongoose.connect(mongo);
 
