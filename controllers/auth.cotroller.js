@@ -69,6 +69,7 @@ export const me = async (req, res) => {
 export const verify = async (req, res, next) => {
     try {
         const auth_id = req.header.auth_id;
+        console.log({ header: req.header });
         if (!auth_id) throw new Error("Youre not have access of it, sorry!")
 
         const user = await User.findById(auth_id);
