@@ -19,7 +19,7 @@ export const getLeaderboard = async (req, res) => {
         }
     } catch (error) {
         console.log({ error })
-        return res.status(502).json({ message: error });
+        return res.status(502).json({ message: error.message });
     }
 
 }

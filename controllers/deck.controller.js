@@ -9,7 +9,7 @@ export const getDeckUser = async (req, res) => {
         return res.status(200).json({ deck: deck, length: deck.length });
     } catch (error) {
         console.log({ error })
-        return res.status(502).json({ message: error })
+        return res.status(502).json({ message: error.message })
     }
 }
 
@@ -19,7 +19,7 @@ export const saveDeckUser = async (req, res) => {
         // cek apakah sudah ada deck sebelumnya
         const { index } = req.body;
 
-        if (req.body.deck.length <= 60 - 1) throw new Error("Deck Belum Terisi Penuh, deck gagal disimpan");
+        if (req.body.deck.length <= 10 - 1) throw new Error("Deck Belum Terisi Penuh, deck gagal disimpan");
 
         const deck = await Deck.find({ user: req.user._id, index: index });
 
