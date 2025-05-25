@@ -79,6 +79,8 @@ export const verify = async (req, res, next) => {
             ...user
         };
 
+        console.log({ user: req.user })
+
         next();
     } catch (error) {
         console.log({ error })
