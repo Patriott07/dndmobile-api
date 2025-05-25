@@ -75,9 +75,7 @@ export const verify = async (req, res, next) => {
 
         if (!user) throw new Error("Youre authentication faill")
 
-        req.user = {
-            ...user
-        };
+        req.user = user;
 
         console.log({ user: req.user })
 
