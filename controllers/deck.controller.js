@@ -22,6 +22,7 @@ export const saveDeckUser = async (req, res) => {
         if (req.body.deck.length <= 10 - 1) throw new Error("Deck Belum Terisi Penuh, deck gagal disimpan");
 
         const deck = await Deck.findOne({ user: req.user._id, index: index });
+        console.log({ deck })
 
         if (!deck) {
             // add
